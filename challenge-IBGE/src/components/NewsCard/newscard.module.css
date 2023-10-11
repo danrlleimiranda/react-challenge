@@ -1,0 +1,41 @@
+.card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 331px;
+  margin: 15px;
+}
+
+.card h3 {
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.card p {
+  height: 40%;
+  margin: 5px 0 5px;
+}
+
+.card span {
+  align-self: flex-start;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.cardBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.bottomBtn {
+  align-self: flex-end;
+  margin-top: 10px;
+}
