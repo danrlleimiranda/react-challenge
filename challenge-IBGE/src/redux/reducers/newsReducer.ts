@@ -1,7 +1,8 @@
 import { AnyAction } from "redux"
 import { FETCH_SUCCESS } from "../actions";
 
-const INITIAL_STATE = {}
+
+const INITIAL_STATE = {};
 
 const newsReducer = (state = INITIAL_STATE, action: AnyAction) => {
     switch (action.type) {
