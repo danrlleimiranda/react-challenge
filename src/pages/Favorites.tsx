@@ -1,14 +1,21 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import NewsCard from '../components/NewsCard/NewsCard';
 import style from '../components/RecentsNews/recentsNews.module.css';
+import { Dispatch, NewsType } from '../types';
+import { fetchData } from '../redux/actions';
 
 export default function Favorites() {
-  const [favorites, setFavorites] = useState([]);
+  const favoritesStorage = localStorage.getItem('favoriteNews') || '[]';
+  const [favorites, setFavorites] = useState(JSON.parse(favoritesStorage));
+  const dispatch: Dispatch = useDispatch();
 
   useEffect(() => {
-    const favoritesStorage = localStorage.getItem('favoriteNews') || '[]';
-    setFavorites(JSON.parse(favoritesStorage));
+    const favoritesInStorage = localStorage.getItem('favoriteNews') || '[]';
+    setFavorites(JSON.parse(favoritesInStorage));
+    dispatch(fetchData());
   }, []);
+
   const [quantityNews, setQuantityNews] = useState(6);
 
   const handleNewsQuantity = () => {
@@ -19,8 +26,8 @@ export default function Favorites() {
   return (
     <section className={ style.section }>
       <div className={ style.container }>
-        {favorites && favorites.filter((_, i) => i < quantityNews)
-          .map((item, index) => (
+        {favorites && favorites.filter((_: NewsType, i: number) => i < quantityNews)
+          .map((item: NewsType, index: number) => (
             <NewsCard key={ index } news={ item } index={ index + 1 } className="card" />
           ))}
       </div>
