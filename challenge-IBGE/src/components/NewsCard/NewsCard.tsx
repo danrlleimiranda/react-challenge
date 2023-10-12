@@ -4,9 +4,10 @@ import style from "./newscard.module.css";
 type NewsCardProps = {
   news: NewsType;
   index: number;
+  className: string;
 };
 
-export default function NewsCard({ news, index }: NewsCardProps) {
+export default function NewsCard({ news, index, className }: NewsCardProps) {
   const publishedDaysAgo = () => {
     const dataBrasileira = news.data_publicacao;
 
@@ -57,7 +58,7 @@ export default function NewsCard({ news, index }: NewsCardProps) {
   };
 
   return (
-    <div className={style.card}>
+    <div className={style[className]}>
       <div className={style.cardTop}>
         {index === 0 && <span>Notícia mais recente</span>}
         {index === 0 && <button onClick={handleFavorite}>Favoritar</button>}

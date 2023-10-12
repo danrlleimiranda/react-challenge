@@ -1,0 +1,22 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: auto;
+  width: 72.3%;
+  padding: 10px 20px;
+  background-color: white;
+}
+
+.filters button {
+  background-color: transparent;
+  color: black;
+  border: none;
+  cursor: pointer;
+  margin-right: 30px;
+}
+
+.filters button:hover {
+  text-decoration: underline;
+  text-decoration-color: red;
+}
