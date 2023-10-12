@@ -1,5 +1,6 @@
-import { NewsType } from "../../types";
-import style from "./newscard.module.css";
+import { useLocation } from 'react-router-dom';
+import { NewsType } from '../../types';
+import style from './newscard.module.css';
 
 type NewsCardProps = {
   news: NewsType;
@@ -8,6 +9,7 @@ type NewsCardProps = {
 };
 
 export default function NewsCard({ news, index, className }: NewsCardProps) {
+  const { pathname } = useLocation();
   const publishedDaysAgo = () => {
     const dataBrasileira = news.data_publicacao;
 
@@ -19,22 +21,21 @@ export default function NewsCard({ news, index, className }: NewsCardProps) {
       parseInt(partesDataHora[0], 10),
       parseInt(partesDataHora[3], 10),
       parseInt(partesDataHora[4], 10),
-      parseInt(partesDataHora[5], 10)
+      parseInt(partesDataHora[5], 10),
     );
 
     const dataAtual = new Date();
 
-    const diferencaEmMilissegundos =
-      dataAtual.getTime() - dataParaComparar.getTime();
+    const diferencaEmMilissegundos = dataAtual.getTime() - dataParaComparar.getTime();
 
     const diferencaEmDias = diferencaEmMilissegundos / (1000 * 60 * 60 * 24);
 
     if (Math.floor(diferencaEmDias) === 0) {
-      return "Hoje";
+      return 'Hoje';
     }
 
     if (Math.floor(diferencaEmDias) === 1) {
-      return "1 dia atrás";
+      return '1 dia atrás';
     }
 
     if (Math.floor(diferencaEmDias) > 1) {
@@ -44,39 +45,42 @@ export default function NewsCard({ news, index, className }: NewsCardProps) {
 
   const handleFavorite = () => {
     const alreadyInLocalStorage = JSON.parse(
-      localStorage.getItem("favoriteNews") || "[]"
+      localStorage.getItem('favoriteNews') || '[]',
     );
     const favoriteNews = [...alreadyInLocalStorage, news];
-    localStorage.setItem("favoriteNews", JSON.stringify(favoriteNews));
+    localStorage.setItem('favoriteNews', JSON.stringify(favoriteNews));
 
     if (alreadyInLocalStorage.some((item: NewsType) => item.id === news.id)) {
       const filteredNews = alreadyInLocalStorage.filter(
-        (item: NewsType) => item.id !== news.id
+        (item: NewsType) => item.id !== news.id,
       );
-      localStorage.setItem("favoriteNews", JSON.stringify(filteredNews));
+      localStorage.setItem('favoriteNews', JSON.stringify(filteredNews));
     }
   };
 
   return (
-    <div className={style[className]}>
-      <div className={style.cardTop}>
-        {index === 0 && <span>Notícia mais recente</span>}
-        {index === 0 && <button onClick={handleFavorite}>Favoritar</button>}
+    <div className={ style[className] }>
+      <div className={ style.cardTop }>
+        {(index === 0
+           && pathname === '/') && <span>Notícia mais recente</span>}
+        {(index === 0
+          && pathname === '/') && <button onClick={ handleFavorite }>Favoritar</button>}
       </div>
       <h3>{news.titulo}</h3>
 
       <p>{news.introducao}</p>
-      <div className={style.cardBottom}>
+      <div className={ style.cardBottom }>
         <span>{`${publishedDaysAgo()}`}</span>
-        <a href={news.link} target="blank">
+        <a href={ news.link } target="blank">
           Leia a notícia aqui
         </a>
       </div>
-      {index >= 1 && (
-        <button onClick={handleFavorite} className={style.bottomBtn}>
+      {(index >= 1) && (
+        <button onClick={ handleFavorite } className={ style.bottomBtn }>
           Favoritar
         </button>
-      )}
+      ) }
+
     </div>
   );
 }
