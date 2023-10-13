@@ -8,16 +8,26 @@ Este é um projeto desenvolvido em React e TypeScript que permite buscar notíci
 
 ### Funcionalidades
 Buscar notícias na API do IBGE via requisições com Fetch.
+
 Exibir a lista de notícias encontradas.
+
 Ser redirecionado para uma notícia específica.
+
 Filtrar notícias por tipo, mais recentes e favoritas.
-Tecnologias Utilizadas
+
+### Tecnologias Utilizadas
 React: Utilizado como biblioteca principal para construir a interface de usuário.
+
 TypeScript: Oferece tipagem estática para o JavaScript, tornando o código mais seguro e fácil de manter.
+
 Redux: Utilizado para gerenciar o estado global da aplicação.
+
 React Router: Responsável pelo roteamento da aplicação.
+
 LocalStorage: Persistência de dados relacionados a notícias favoritas do usuário.
+
 API do IBGE: Utilizada para buscar notícias em tempo real.
+
 
 ### Estrutura de Diretórios
 A estrutura de diretórios do projeto está organizada da seguinte forma:
