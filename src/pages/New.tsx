@@ -1,16 +1,22 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { GlobalStateType } from '../types';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch, GlobalStateType } from '../types';
 import NewsCard from '../components/NewsCard/NewsCard';
 import style from '../components/RecentsNews/recentsNews.module.css';
+import { fetchData } from '../redux/actions';
 
 export default function New() {
   const news = useSelector((globalState: GlobalStateType) => globalState.news.items);
   const [quantityNews, setQuantityNews] = useState(6);
+  const dispatch: Dispatch = useDispatch();
 
   const handleNewsQuantity = () => {
     setQuantityNews((prevQuantity) => prevQuantity + 6);
   };
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, []);
   return (
     <section className={ style.section }>
       <div className={ style.container }>
