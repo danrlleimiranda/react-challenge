@@ -2,6 +2,8 @@
 
 Este é um projeto desenvolvido em React e TypeScript que permite buscar notícias na API de notícias do IBGE (Instituto Brasileiro de Geografia e Estatística). O projeto utiliza o Redux para gerenciar o estado da aplicação, garantindo uma organização eficiente e aprimorando a escalabilidade.
 
+![prints da aplicação](./src/assets/heroPrint.png)
+![prints da aplicação](./src/assets/newsPrint.png)
 
 
 ### Funcionalidades
