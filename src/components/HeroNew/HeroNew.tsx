@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useSelector } from 'react-redux';
 import style from '../RecentsNews/recentsNews.module.css';
 import { GlobalStateType } from '../../types';
@@ -15,12 +13,13 @@ export default function HeroNew() {
       <img
         src={ `https://agenciadenoticias.ibge.gov.br/${image.image_intro}` }
         alt=""
+        className={ style.hero }
       />
-      <div>
-        {firtsNews && (
-          <NewsCard news={ firtsNews[0] } index={ 0 } className="cardFirstNews" />
-        )}
-      </div>
+
+      {firtsNews && (
+        <NewsCard news={ firtsNews[0] } index={ 0 } className="cardFirstNews" />
+      )}
+
     </section>
 
   );
