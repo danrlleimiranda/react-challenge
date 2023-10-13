@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { NewsType } from '../../types';
-import style from './newscard.module.css';
+import style from './newsCard.module.css';
 import favoriteIcon from '../../assets/heartFull.svg';
 import notFavoriteIcon from '../../assets/heartEmpty.svg';
 
@@ -92,6 +92,7 @@ export default function NewsCard({ news, index, className }: NewsCardProps) {
           Leia a notícia aqui
         </a>
       </div>
+      <hr />
       {(index >= 1) && (
         <button onClick={ handleFavorite } className={ style.bottomBtn }>
           {isFavorite

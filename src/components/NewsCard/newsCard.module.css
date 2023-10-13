@@ -23,6 +23,11 @@
   color: black;
 }
 
+hr {
+  width: 108.5%;
+  margin-top: 5px;
+  opacity: 0.25;
+}
 .card h3, .cardFirstNews h3 {
   height: 80px;
   margin-bottom: 20px;
