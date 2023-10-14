@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { BeatLoader } from 'react-spinners';
 import style from '../RecentsNews/recentsNews.module.css';
 import { GlobalStateType } from '../../types';
 import NewsCard from '../NewsCard/NewsCard';
@@ -6,6 +7,16 @@ import NewsCard from '../NewsCard/NewsCard';
 export default function HeroNew() {
   const firtsNews = useSelector((globalState: GlobalStateType) => globalState.news.items);
   const image = firtsNews ? JSON.parse(firtsNews[0].imagens) : '';
+
+  if (!firtsNews) {
+    return (
+      <div
+        className={ style.firstNews }
+      >
+        <BeatLoader color="#36d7b7" />
+      </div>
+    );
+  }
 
   return (
 
