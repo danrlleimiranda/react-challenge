@@ -1,10 +1,20 @@
 # Projeto Trybe News 
 
-Este é um projeto desenvolvido em React e TypeScript que permite buscar notícias na API de notícias do IBGE (Instituto Brasileiro de Geografia e Estatística). O projeto utiliza o Redux para gerenciar o estado da aplicação, garantindo uma organização eficiente e aprimorando a escalabilidade.
+Este é um projeto desenvolvido em React e TypeScript utilizando o framework Vite, que permite buscar notícias na API de notícias do IBGE (Instituto Brasileiro de Geografia e Estatística). O projeto utiliza o Redux para gerenciar o estado da aplicação, garantindo uma organização eficiente e aprimorando a escalabilidade.
+
+## Versão desktop:
 
 ![prints da aplicação](./src/assets/heroPrint.png)
 ![prints da aplicação](./src/assets/newsPrint.png)
 
+
+## Versão Mobile:
+
+<div>
+  <img width="333px" src="./src/assets/heroNewsMobile.png"/>
+  <img width="333px" src="./src/assets/newsMobile.png"/> 
+  <img  width="333px" src="./src/assets/favoritesMobile.png"/>
+</div>
 
 ### Funcionalidades
 Buscar notícias na API do IBGE via requisições com Fetch.
@@ -12,6 +22,8 @@ Buscar notícias na API do IBGE via requisições com Fetch.
 Exibir a lista de notícias encontradas.
 
 Ser redirecionado para uma notícia específica.
+
+Favoritar as notícias que desejar.
 
 Filtrar notícias por tipo, mais recentes e favoritas.
 
@@ -27,6 +39,8 @@ React Router: Responsável pelo roteamento da aplicação.
 LocalStorage: Persistência de dados relacionados a notícias favoritas do usuário.
 
 API do IBGE: Utilizada para buscar notícias em tempo real.
+
+Media query: Para responsividade e uma maior usabilidade em aparelhos mobile.
 
 
 ### Estrutura de Diretórios
