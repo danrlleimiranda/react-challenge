@@ -23,7 +23,7 @@ export default function HeroNew() {
     <section className={ style.firstNews }>
       <img
         src={ `https://agenciadenoticias.ibge.gov.br/${image.image_intro}` }
-        alt=""
+        alt="Notícia em destaque"
         className={ style.hero }
       />
 

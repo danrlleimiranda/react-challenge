@@ -20,7 +20,8 @@ export default function New() {
   return (
     <section className={ style.section }>
       <div className={ style.container }>
-        {news && news.filter((item) => item.tipo === 'Notícia')
+        {news && news.filter((item) => item.tipo === 'Notícia'
+        && item.titulo !== news[0].titulo)
           .filter((_, i) => i < quantityNews)
           .map((item, index) => (
             <NewsCard key={ index } news={ item } index={ index + 1 } className="card" />

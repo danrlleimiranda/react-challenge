@@ -22,7 +22,13 @@ export default function Favorites() {
     setQuantityNews((prevQuantity) => prevQuantity + 6);
   };
 
-  if (favorites.length === 0) return (<h1>Nenhuma Notícia favoritada!</h1>);
+  if (favorites.length === 0) {
+    return (
+      <h1 className={ style.nothingHere }>
+        Nenhuma Notícia favoritada!
+      </h1>
+    );
+  }
   return (
     <section className={ style.section }>
       <div className={ style.container }>

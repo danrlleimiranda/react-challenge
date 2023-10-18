@@ -79,8 +79,8 @@ export default function NewsCard({ news, index, className }: NewsCardProps) {
         ) && (
           <button onClick={ handleFavorite }>
             {isFavorite
-              ? <img src={ favoriteIcon } alt="" />
-              : <img src={ notFavoriteIcon } alt="" />}
+              ? <img src={ favoriteIcon } alt="notícia favorita" />
+              : <img src={ notFavoriteIcon } alt="notícia não favoritada" />}
 
           </button>)}
       </div>
@@ -96,8 +96,8 @@ export default function NewsCard({ news, index, className }: NewsCardProps) {
       {(index >= 1) && (
         <button onClick={ handleFavorite } className={ style.bottomBtn }>
           {isFavorite
-            ? <img src={ favoriteIcon } alt="" />
-            : <img src={ notFavoriteIcon } alt="" />}
+            ? <img src={ favoriteIcon } alt="notícia favorita" />
+            : <img src={ notFavoriteIcon } alt="notícia não favoritada" />}
         </button>
       ) }
 
