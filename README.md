@@ -45,6 +45,8 @@ API do IBGE: Utilizada para buscar notícias em tempo real.
 
 Media query: Para responsividade e uma maior usabilidade em aparelhos mobile.
 
+Vitest: Utilizado para a fase de testes da aplicação para uma melhor previsibilidade e correção de bugs.
+
 
 ### Estrutura de Diretórios
 A estrutura de diretórios do projeto está organizada da seguinte forma:
