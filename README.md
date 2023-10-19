@@ -2,7 +2,7 @@
 
 Este é um projeto desenvolvido em React e TypeScript utilizando o framework Vite, que permite buscar notícias na API de notícias do IBGE (Instituto Brasileiro de Geografia e Estatística). O projeto utiliza o Redux para gerenciar o estado da aplicação, garantindo uma organização eficiente e aprimorando a escalabilidade.
 
-O projeto pode ser acessado clicando <a href="https://danrlleimiranda.github.io/react-challenge/" target="blank">aqui</a>!
+O site pode ser acessado clicando <a href="https://danrlleimiranda.github.io/react-challenge/" target="blank">aqui</a>!
 
 
 ## Versão desktop:
