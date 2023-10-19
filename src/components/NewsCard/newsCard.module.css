@@ -30,7 +30,11 @@ hr {
   width: 108.5%;
   z-index: 0;
 }
-.card h3,
+.card h3 {
+  height: 10vh;
+  margin-bottom: 1vw;
+}
+
 .cardFirstNews h3 {
   height: fit-content;
   margin-bottom: 1vw;
