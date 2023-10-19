@@ -13,7 +13,8 @@ export type NewsType = {
 export type GlobalStateType = {
   news: {
     items: NewsType[]
-  }
+  },
+  favorites: NewsType[]
 };
 
 export type Dispatch = ThunkDispatch<GlobalStateType, null, AnyAction>;

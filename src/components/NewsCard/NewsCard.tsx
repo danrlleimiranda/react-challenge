@@ -1,9 +1,11 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { NewsType } from '../../types';
+import { useDispatch, useSelector } from 'react-redux';
+import { GlobalStateType, NewsType } from '../../types';
 import style from './newsCard.module.css';
 import favoriteIcon from '../../assets/heartFull.svg';
 import notFavoriteIcon from '../../assets/heartEmpty.svg';
+import { removeFavorite, updateFavorite } from '../../redux/actions';
 
 type NewsCardProps = {
   news: NewsType;
@@ -21,6 +23,8 @@ export default function NewsCard({ news, index, className }: NewsCardProps) {
       setIsFavorite(true);
     }
   }, []);
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
   const publishedDaysAgo = () => {
     const dataBrasileira = news.data_publicacao;
 
@@ -54,19 +58,28 @@ export default function NewsCard({ news, index, className }: NewsCardProps) {
     }
   };
 
-  const handleFavorite = () => {
+  const favoritesRedux = useSelector((globalState: GlobalStateType) => globalState
+    .favorites);
+
+  const handleFavorite = (id: any) => {
     const alreadyInLocalStorage = JSON.parse(
       localStorage.getItem('favoriteNews') || '[]',
     );
-    const favoriteNews = [...alreadyInLocalStorage, news];
-    localStorage.setItem('favoriteNews', JSON.stringify(favoriteNews));
-    setIsFavorite(true);
-    if (alreadyInLocalStorage.some((item: NewsType) => item.id === news.id)) {
+    if (!alreadyInLocalStorage.some((item: NewsType) => item.id === id)
+    || !favoritesRedux.some((item: NewsType) => item.id === id)) {
+      const favoriteNews = [...alreadyInLocalStorage, news];
+      localStorage.setItem('favoriteNews', JSON.stringify(favoriteNews));
+      dispatch(updateFavorite(favoriteNews));
+      setIsFavorite((prev) => (!prev));
+    }
+    if (alreadyInLocalStorage.some((item: NewsType) => item.id === id)
+    || favoritesRedux.some((item: NewsType) => item.id === id)) {
       const filteredNews = alreadyInLocalStorage.filter(
-        (item: NewsType) => item.id !== news.id,
+        (item: NewsType) => item.id !== id,
       );
-      setIsFavorite(false);
       localStorage.setItem('favoriteNews', JSON.stringify(filteredNews));
+      dispatch(removeFavorite(filteredNews));
+      setIsFavorite((prev) => (!prev));
     }
   };
 
@@ -93,11 +106,16 @@ export default function NewsCard({ news, index, className }: NewsCardProps) {
         </a>
       </div>
       <hr />
-      {(index >= 1) && (
-        <button onClick={ handleFavorite } className={ style.bottomBtn }>
-          {isFavorite
+      {(index > 0 && pathname !== '/favorites') && (
+        <button onClick={ () => handleFavorite(news.id) } className={ style.bottomBtn }>
+          {(isFavorite)
             ? <img src={ favoriteIcon } alt="notícia favorita" />
             : <img src={ notFavoriteIcon } alt="notícia não favoritada" />}
+        </button>
+      ) }
+      {(index > 0 && pathname === '/favorites') && (
+        <button onClick={ () => handleFavorite(news.id) } className={ style.bottomBtn }>
+          <img src={ favoriteIcon } alt="notícia favorita" />
         </button>
       ) }
 

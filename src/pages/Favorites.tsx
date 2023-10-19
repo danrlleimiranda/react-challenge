@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import NewsCard from '../components/NewsCard/NewsCard';
 import style from '../components/RecentsNews/recentsNews.module.css';
-import { Dispatch, NewsType } from '../types';
+import { Dispatch, GlobalStateType, NewsType } from '../types';
 import { fetchData } from '../redux/actions';
 
 export default function Favorites() {
   const favoritesStorage = localStorage.getItem('favoriteNews') || '[]';
-  const [favorites, setFavorites] = useState(JSON.parse(favoritesStorage));
+  const favoritesRedux = useSelector((globalState: GlobalStateType) => globalState
+    .favorites);
+  const favorites = favoritesStorage ? JSON.parse(favoritesStorage) : [];
   const dispatch: Dispatch = useDispatch();
 
   useEffect(() => {
-    const favoritesInStorage = localStorage.getItem('favoriteNews') || '[]';
-    setFavorites(JSON.parse(favoritesInStorage));
     dispatch(fetchData());
   }, []);
 
@@ -22,7 +22,7 @@ export default function Favorites() {
     setQuantityNews((prevQuantity) => prevQuantity + 6);
   };
 
-  if (favorites.length === 0) {
+  if (favoritesRedux.length === 0 && favorites.length === 0) {
     return (
       <h1 className={ style.nothingHere }>
         Nenhuma Notícia favoritada!
@@ -32,7 +32,11 @@ export default function Favorites() {
   return (
     <section className={ style.section }>
       <div className={ style.container }>
-        {favorites && favorites.filter((_: NewsType, i: number) => i < quantityNews)
+        {favoritesRedux.length === 0 ? favorites
+          .filter((_: NewsType, i: number) => i < quantityNews)
+          .map((item: NewsType, index: number) => (
+            <NewsCard key={ index } news={ item } index={ index + 1 } className="card" />
+          )) : favoritesRedux.filter((_: NewsType, i: number) => i < quantityNews)
           .map((item: NewsType, index: number) => (
             <NewsCard key={ index } news={ item } index={ index + 1 } className="card" />
           ))}

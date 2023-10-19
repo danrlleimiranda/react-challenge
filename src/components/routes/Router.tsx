@@ -8,8 +8,8 @@ import Favorites from '../../pages/Favorites';
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" element={ <Layout /> }>
-        <Route index element={ <RecentsNews /> } />
+      <Route path="" element={ <Layout /> }>
+        <Route path="/" element={ <RecentsNews /> } />
         <Route path="/release" element={ <Release /> } />
         <Route path="/new" element={ <New /> } />
         <Route path="/favorites" element={ <Favorites /> } />
