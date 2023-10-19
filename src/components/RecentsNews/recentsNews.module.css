@@ -58,7 +58,14 @@
   line-height: 15px; /* 107.143% */
   text-align: center;
   text-transform: uppercase;
+  transition: 0.3s all ease;
   width: 10vw;
+}
+
+.showMore button:hover {
+  border: 5px solid rgb(158, 5, 5, 0.28);
+  transition: 0.3s all ease;
+  font-weight: 800;
 }
 
 .nothingHere {

@@ -67,6 +67,13 @@ hr {
   padding: 1vw;
   text-decoration: none;
   width: 12vw;
+  transition: 0.3s all ease;
+}
+
+.card a:hover, .cardFirstNews a:hover {
+  background-color: #007c3a;
+  color: white;
+  transition: 0.3s all ease;
 }
 
 .card span {
