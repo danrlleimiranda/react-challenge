@@ -32,7 +32,7 @@ hr {
 }
 .card h3,
 .cardFirstNews h3 {
-  height: 10vh;
+  height: fit-content;
   margin-bottom: 1vw;
 }
 
