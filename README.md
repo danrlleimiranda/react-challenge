@@ -11,9 +11,9 @@ Este é um projeto desenvolvido em React e TypeScript utilizando o framework Vit
 ## Versão Mobile:
 
 <div>
-  <img width="333px" src="./src/assets/heroNewsMobile.png"/>
-  <img width="333px" src="./src/assets/newsMobile.png"/> 
-  <img  width="333px" src="./src/assets/favoritesMobile.png"/>
+  <img width="233px" src="./src/assets/heroNewsMobile.png"/>
+  <img width="233px" src="./src/assets/newsMobile.png"/> 
+  <img  width="233px" src="./src/assets/favoritesMobile.png"/>
 </div>
 
 ### Funcionalidades
